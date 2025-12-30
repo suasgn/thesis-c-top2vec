@@ -1,0 +1,21 @@
+[project]
+name = "thesis"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "altair>=6.0.0",
+    "duckdb>=1.4.3",
+    "marimo>=0.17.6",
+    "mcp>=1",
+    "nbformat>=5.10.4",
+    "openai>=2.14.0",
+    "polars[pyarrow]>=1.36.1",
+    "pydantic>=2",
+    "python-lsp-ruff>=2.3.0",
+    "python-lsp-server>=1.14.0",
+    "sqlglot>=28.5.0",
+    "top2vec>=1.0.34",
+    "websockets>=15.0.1",
+]
