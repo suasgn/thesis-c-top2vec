@@ -8,7 +8,7 @@
 
 import marimo
 
-__generated_with = "0.19.6"
+__generated_with = "0.19.7"
 app = marimo.App(width="full", auto_download=["html"])
 
 
@@ -23,7 +23,7 @@ def _():
     import json
     import torch
     from datasets import load_dataset
-    from top2vec import Top2Vec
+    from ctop2vec import Top2Vec
 
     print(sys.version)
     return Top2Vec, json, load_dataset, torch
@@ -103,46 +103,6 @@ def _(ds, json):
 
 @app.cell
 def _(ds):
-    # Prepare documents from the loaded dataset for Top2Vec training
-    # Try to identify the appropriate text column in the 'train' split
-    # train_ds = ds["train"]
-
-    # # Detect likely text columns
-    # candidate_text_cols = [
-    #     "paragraph_text",
-    #     "text",
-    #     "article",
-    #     "content",
-    #     "document",
-    #     "news",
-    #     "raw",
-    #     "body",
-    #     "story",
-    # ]
-    # available_cols = list(train_ds.features.keys())
-
-    # text_col = None
-    # for col in candidate_text_cols:
-    #     if col in available_cols:
-    #         text_col = col
-    #         break
-
-    # # If a clear text column isn't found, construct text by concatenating all string fields
-    # def _row_to_text(row):
-    #     parts = []
-    #     for k, v in row.items():
-    #         if isinstance(v, str):
-    #             parts.append(v)
-    #         elif isinstance(v, list):
-    #             parts.extend([x for x in v if isinstance(x, str)])
-    #     return " ".join(parts).strip()
-
-    # if text_col:
-    #     documents = train_ds[text_col]
-    # else:
-    #     # Build documents by concatenating all string-like fields
-    #     documents = [_row_to_text(train_ds[i]) for i in range(len(train_ds))]
-
     documents = ds["train"]["paragraph_text"]
 
     # Basic cleaning: strip whitespace and remove empty entries
@@ -171,7 +131,8 @@ def _(Top2Vec, documents):
     # Create a Contextual Top2Vec model
 
     top2vec_model = Top2Vec(
-        documents=documents, ngram_vocab=False, contextual_top2vec=True
+        documents=documents, ngram_vocab=False, contextual_top2vec=True,
+        embedding_model="paraphrase-multilingual-MiniLM-L12-v2"
     )
 
     top2vec_model
@@ -179,15 +140,17 @@ def _(Top2Vec, documents):
 
 
 @app.cell
-def _(Top2Vec, documents):
+def _():
     # Create a Contextual Top2Vec model (ngram_vocab)
 
-    top2vec_ngram_model = Top2Vec(
-        documents=documents, ngram_vocab=True, contextual_top2vec=True
-    )
+    # top2vec_ngram_model = Top2Vec(
+    #     documents=documents,
+    #     ngram_vocab=True,
+    #     contextual_top2vec=True
+    # )
 
-    top2vec_ngram_model
-    return (top2vec_ngram_model,)
+    # top2vec_ngram_model
+    return
 
 
 @app.cell
@@ -228,69 +191,69 @@ def _(top2vec_model):
 
 
 @app.cell
-def _(top2vec_ngram_model):
-    def _():
-        # Inspect topics learned by the model
-        num_topics = top2vec_ngram_model.get_num_topics()
-        topic_sizes, topic_nums = top2vec_ngram_model.get_topic_sizes()
-        top_terms_per_topic = []
-        for topic_num in topic_nums:
-            words, word_scores, _ = top2vec_ngram_model.get_topics(topic_num)
-            top_terms_per_topic.append(
-                {
-                    "topic": int(topic_num),
-                    "size": int(topic_sizes[topic_nums.tolist().index(topic_num)]),
-                    "top_terms": words[:10],
-                    "term_scores": word_scores[:10].tolist(),
-                }
-            )
+def _():
+    # def _():
+    #     # Inspect topics learned by the model
+    #     num_topics = top2vec_ngram_model.get_num_topics()
+    #     topic_sizes, topic_nums = top2vec_ngram_model.get_topic_sizes()
+    #     top_terms_per_topic = []
+    #     for topic_num in topic_nums:
+    #         words, word_scores, _ = top2vec_ngram_model.get_topics(topic_num)
+    #         top_terms_per_topic.append(
+    #             {
+    #                 "topic": int(topic_num),
+    #                 "size": int(topic_sizes[topic_nums.tolist().index(topic_num)]),
+    #                 "top_terms": words[:10],
+    #                 "term_scores": word_scores[:10].tolist(),
+    #             }
+    #         )
 
-        # Display a compact summary
-        summary = {
-            "num_topics": int(num_topics),
-            "largest_topics": [
-                {
-                    "topic": int(topic_nums[i]),
-                    "size": int(topic_sizes[i]),
-                    "top_terms": top_terms_per_topic[i]["top_terms"],
-                }
-                for i in range(min(10, len(topic_nums)))
-            ],
-        }
-        return summary
+    #     # Display a compact summary
+    #     summary = {
+    #         "num_topics": int(num_topics),
+    #         "largest_topics": [
+    #             {
+    #                 "topic": int(topic_nums[i]),
+    #                 "size": int(topic_sizes[i]),
+    #                 "top_terms": top_terms_per_topic[i]["top_terms"],
+    #             }
+    #             for i in range(min(10, len(topic_nums)))
+    #         ],
+    #     }
+    #     return summary
 
 
-    _()
+    # _()
+    return
+
+
+@app.cell
+def _():
+    # # Save the trained model for later reuse
+    # model_path = "top2vec_indosum_contextual_multi"
+    # top2vec_model.save(model_path)
+    # {"saved_path": model_path}
     return
 
 
 @app.cell
 def _(top2vec_model):
     # Save the trained model for later reuse
-    model_path = "top2vec_indosum_contextual"
+    model_path = "top2vec_indosum_ngram_contextual_multi"
     top2vec_model.save(model_path)
     {"saved_path": model_path}
     return
 
 
 @app.cell
-def _(top2vec_ngram_model):
-    # Save the trained model for later reuse
-    ngram_model_path = "top2vec_indosum_ngram_contextual"
-    top2vec_ngram_model.save(ngram_model_path)
-    {"saved_path": ngram_model_path}
+def _(top2vec_model):
+    top2vec_model.get_document_token_topic_assignment()[:5]
     return
 
 
 @app.cell
-def _(top2vec_ngram_model):
-    top2vec_ngram_model.get_document_token_topic_assignment()[:5]
-    return
-
-
-@app.cell
-def _(top2vec_ngram_model):
-    top2vec_ngram_model.get_document_tokens()[:5]
+def _(top2vec_model):
+    top2vec_model.get_document_tokens()[:5]
     return
 
 

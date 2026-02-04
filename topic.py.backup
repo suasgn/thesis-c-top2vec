@@ -1,0 +1,209 @@
+# /// script
+# requires-python = ">=3.13"
+# dependencies = [
+#     "marimo>=0.17.0",
+#     "pyzmq>=27.1.0",
+# ]
+# ///
+
+import marimo
+
+__generated_with = "0.18.4"
+app = marimo.App(width="full", auto_download=["html"])
+
+
+@app.cell
+def _():
+    import os, sys
+    print(sys.version)
+    return
+
+
+@app.cell
+def _():
+    import marimo as mo
+
+    import torch
+
+    # import numpy as np
+    # import pandas as pd
+    from datasets import load_dataset
+    import json
+    import re
+
+    from top2vec import Top2Vec
+    return Top2Vec, load_dataset, torch
+
+
+@app.cell
+def _(torch):
+    # check if cuda or mps available, if available, use one of them, otherwise use cpu
+
+    device = torch.device("cpu")
+
+    if torch.cuda.is_available():
+        device = torch.device("cuda")
+        print("using cuda")
+    elif torch.backends.mps.is_available():
+        device = torch.device("mps")
+        # os.environ["PYTORCH_MPS_HIGH_WATERMARK_RATIO"] = (
+        #     "1"  # This is tracked as pytorch issue #98222
+        # )
+        print("using mps")
+    else:
+        device = torch.device("cpu")
+        print("using cpu")
+    return
+
+
+@app.cell
+def _(load_dataset):
+    ds = load_dataset("joshuasiagian/indosum")
+    ds
+    return (ds,)
+
+
+@app.cell
+def _(ds):
+    # Prepare documents from the loaded dataset for Top2Vec training
+    # Try to identify the appropriate text column in the 'train' split
+    train_ds = ds["train"]
+
+    # Detect likely text columns
+    candidate_text_cols = [
+        "text",
+        "article",
+        "content",
+        "document",
+        "news",
+        "raw",
+        "body",
+        "story",
+    ]
+    available_cols = list(train_ds.features.keys())
+
+    text_col = None
+    for col in candidate_text_cols:
+        if col in available_cols:
+            text_col = col
+            break
+
+
+    # If a clear text column isn't found, construct text by concatenating all string fields
+    def _row_to_text(row):
+        parts = []
+        for k, v in row.items():
+            if isinstance(v, str):
+                parts.append(v)
+            elif isinstance(v, list):
+                parts.extend([x for x in v if isinstance(x, str)])
+        return " ".join(parts).strip()
+
+
+    if text_col:
+        documents = train_ds[text_col]
+    else:
+        # Build documents by concatenating all string-like fields
+        documents = [_row_to_text(train_ds[i]) for i in range(len(train_ds))]
+
+    # Basic cleaning: strip whitespace and remove empty entries
+    documents = [
+        d.strip() for d in documents if isinstance(d, str) and len(d.strip()) > 0
+    ]
+
+    len(documents)
+    return (documents,)
+
+
+@app.cell
+def _(Top2Vec, documents):
+    # Create a Contextual Top2Vec model
+    top2vec_model = Top2Vec(
+        documents=documents, ngram_vocab=True, contextual_top2vec=True
+    )
+
+    top2vec_model
+    return (top2vec_model,)
+
+
+@app.cell
+def _(top2vec_model):
+    # Inspect topics learned by the model
+    num_topics = top2vec_model.get_num_topics()
+    topic_sizes, topic_nums = top2vec_model.get_topic_sizes()
+    top_terms_per_topic = []
+    for topic_num in topic_nums:
+        words, word_scores, _ = top2vec_model.get_topics(topic_num)
+        top_terms_per_topic.append(
+            {
+                "topic": int(topic_num),
+                "size": int(topic_sizes[topic_nums.tolist().index(topic_num)]),
+                "top_terms": words[:10],
+                "term_scores": word_scores[:10].tolist(),
+            }
+        )
+
+    # Display a compact summary
+    summary = {
+        "num_topics": int(num_topics),
+        "largest_topics": [
+            {
+                "topic": int(topic_nums[i]),
+                "size": int(topic_sizes[i]),
+                "top_terms": top_terms_per_topic[i]["top_terms"],
+            }
+            for i in range(min(10, len(topic_nums)))
+        ],
+    }
+    summary
+    return
+
+
+@app.cell
+def _():
+    # import altair as alt
+    # import pandas as pd
+
+    # # Extract topic information from the Contextual Top2Vec model
+    # _num_topics = top2vec_model.get_num_topics()
+    # _topic_sizes, _topic_nums = top2vec_model.get_topic_sizes()
+
+    # _rows = []
+    # for _i, _topic_num in enumerate(_topic_nums):
+    #     _words, _word_scores, _, _ = top2vec_model.get_topics(topic_num=int(_topic_num))
+    #     _rows.append(
+    #         {
+    #             "topic": int(_topic_num),
+    #             "size": int(_topic_sizes[_i]),
+    #             "top_terms": ", ".join(_words[:10]),
+    #         }
+    #     )
+
+    # _df_topics = pd.DataFrame(_rows).sort_values("size", ascending=False)
+
+    # alt.Chart(_df_topics).mark_bar().encode(
+    #     x=alt.X("size:Q", title="Topic Size"),
+    #     y=alt.Y("topic:N", sort="-x", title="Topic ID"),
+    #     color=alt.Color("size:Q", scale=alt.Scale(scheme="tealblues"), title="Size"),
+    #     tooltip=[
+    #         alt.Tooltip("topic:N", title="Topic"),
+    #         alt.Tooltip("size:Q", title="Size"),
+    #         alt.Tooltip("top_terms:N", title="Top Terms"),
+    #     ],
+    # ).properties(
+    #     title=f"Contextual Top2Vec Topics ({int(_num_topics)} total)"
+    # ).interactive()
+    return
+
+
+@app.cell
+def _(top2vec_model):
+    # Save the trained model for later reuse
+    model_path = "top2vec_indosum_model"
+    top2vec_model.save(model_path)
+    {"saved_path": model_path}
+    return
+
+
+if __name__ == "__main__":
+    app.run()
