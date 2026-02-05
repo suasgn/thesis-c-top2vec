@@ -20,145 +20,55 @@
     {
       "id": "Hbol",
       "code_hash": "43eb33f2fc0a25aca09d0a0cf0f1d319",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
-        }
-      ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stdout",
-          "text": "3.10.15 (main, Sep  9 2024, 22:43:48) [Clang 18.1.8 ]\n",
-          "mimetype": "text/plain"
-        }
-      ]
+      "outputs": [],
+      "console": []
     },
     {
       "id": "MJUe",
       "code_hash": "307b9c87d75e953155275111198cb391",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
       "id": "vblA",
       "code_hash": "3fc79b61bcfb48cb3fa84b2db4f20735",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
       "id": "bkHC",
       "code_hash": "7568016c7418305e311a6e0051e891f2",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<pre class='text-xs'>DatasetDict({\n    train: Dataset({\n        features: [&#x27;summary&#x27;, &#x27;document&#x27;],\n        num_rows: 14262\n    })\n    validation: Dataset({\n        features: [&#x27;summary&#x27;, &#x27;document&#x27;],\n        num_rows: 750\n    })\n    test: Dataset({\n        features: [&#x27;summary&#x27;, &#x27;document&#x27;],\n        num_rows: 3762\n    })\n})</pre>"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
       "id": "lEQa",
       "code_hash": "f6191d1968da5767dfa59dc436924271",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
-        }
-      ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stdout",
-          "text": "{\n    \"summary\": [\n        \"Dokter Lula Kamal yang merupakan selebriti sekaligus rekan kerja Ryan Thamrin menyebut kawannya itu sudah sakit sejak setahun yang lalu . Lula menuturkan , sakit itu membuat Ryan mesti vakum dari semua kegiatannya , termasuk menjadi pembawa acara Dokter Oz Indonesia . Kondisi itu membuat Ryan harus kembali ke kampung halamannya di Pekanbaru , Riau untuk menjalani istirahat .\"\n    ],\n    \"document\": [\n        \"Jakarta , CNN Indonesia - - Dokter Ryan Thamrin , yang terkenal lewat acara Dokter Oz Indonesia , meninggal dunia pada Jumat ( 4 / 8 ) dini hari . Dokter Lula Kamal yang merupakan selebriti sekaligus rekan kerja Ryan menyebut kawannya itu sudah sakit sejak setahun yang lalu . Lula menuturkan , sakit itu membuat Ryan mesti vakum dari semua kegiatannya , termasuk menjadi pembawa acara Dokter Oz Indonesia . Kondisi itu membuat Ryan harus kembali ke kampung halamannya di Pekanbaru , Riau untuk menjalani istirahat . \\\" Setahu saya dia orangnya sehat , tapi tahun lalu saya dengar dia sakit . ( Karena ) sakitnya , ia langsung pulang ke Pekanbaru , jadi kami yang mau jenguk juga susah . Barangkali mau istirahat , ya betul juga , kalau di Jakarta susah isirahatnya , \\\" kata Lula kepada CNNIndonesia.com , Jumat ( 4 / 8 ) . Lula yang mengenal Ryan sejak sebelum aktif berkarier di televisi mengaku belum sempat membesuk Ryan lantaran lokasi yang jauh . Dia juga tak tahu penyakit apa yang diderita Ryan . \\\" Itu saya enggak tahu , belum sempat jenguk dan enggak selamanya bisa dijenguk juga . Enggak tahu berat sekali apa bagaimana , \\\" tutur Ryan . Walau sudah setahun menderita sakit , Lula tak mengetahui apa penyebab pasti kematian Dr Oz Indonesia itu . Meski demikian , ia mendengar beberapa kabar yang menyebut bahwa penyebab Ryan meninggal adalah karena jatuh di kamar mandi . \\u201c Saya tidak tahu , barangkali penyakit yang dulu sama yang sekarang berbeda , atau penyebab kematiannya beda dari penyakit sebelumnya . Kita kan enggak bisa mengambil kesimpulan , \\\" kata Lula . Ryan Thamrin terkenal sebagai dokter yang rutin membagikan tips dan informasi kesehatan lewat tayangan Dokter Oz Indonesia . Ryan menempuh Pendidikan Dokter pada tahun 2002 di Fakultas Kedokteran Universitas Gadjah Mada . Dia kemudian melanjutkan pendidikan Klinis Kesehatan Reproduksi dan Penyakit Menular Seksual di Mahachulalongkornrajavidyalaya University , Bangkok , Thailand pada 2004 .\"\n    ]\n}\n",
-          "mimetype": "text/plain"
-        }
-      ]
+      "outputs": [],
+      "console": []
     },
     {
       "id": "PKri",
-      "code_hash": "231cc4c68ff2947ada642cba6e934470",
-      "outputs": [
-        {
-          "type": "error",
-          "ename": "exception",
-          "evalue": "sentence-transformers/paraphrase-multilingual-MiniLM-L6-v2 is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'\nIf this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`",
-          "traceback": []
-        }
-      ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "2026-02-05 12:50:14,317 - top2vec - INFO - Pre-processing documents for training\n/Users/siagian/thesis/.venv/lib/python3.10/site-packages/sklearn/feature_extraction/text.py:517: UserWarning: The parameter 'token_pattern' will not be used since 'tokenizer' is not None'\n  warnings.warn(\n2026-02-05 12:50:23,244 - top2vec - INFO - Creating vocabulary embedding\n",
-          "mimetype": "text/plain"
-        },
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">&quot;/Users/siagian/thesis/.venv/lib/python3.10/site-packages/huggingface_hub/utils/_http.py&quot;</span>, line <span class=\"m\">403</span>, in <span class=\"n\">hf_raise_for_status</span>\n<span class=\"w\">    </span><span class=\"n\">response</span><span class=\"o\">.</span><span class=\"n\">raise_for_status</span><span class=\"p\">()</span>\n  File <span class=\"nb\">&quot;/Users/siagian/thesis/.venv/lib/python3.10/site-packages/requests/models.py&quot;</span>, line <span class=\"m\">1026</span>, in <span class=\"n\">raise_for_status</span>\n<span class=\"w\">    </span><span class=\"k\">raise</span> <span class=\"n\">HTTPError</span><span class=\"p\">(</span><span class=\"n\">http_error_msg</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"o\">=</span><span class=\"bp\">self</span><span class=\"p\">)</span>\n<span class=\"gr\">requests.exceptions.HTTPError</span>: <span class=\"n\">404 Client Error: Not Found for url: https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L6-v2/resolve/main/tokenizer_config.json</span>\n\n<span class=\"gt\">The above exception was the direct cause of the following exception:</span>\n\n<span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">&quot;/Users/siagian/thesis/.venv/lib/python3.10/site-packages/transformers/utils/hub.py&quot;</span>, line <span class=\"m\">479</span>, in <span class=\"n\">cached_files</span>\n<span class=\"w\">    </span><span class=\"n\">hf_hub_download</span><span class=\"p\">(</span>\n  File <span class=\"nb\">&quot;/Users/siagian/thesis/.venv/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py&quot;</span>, line <span class=\"m\">114</span>, in <span class=\"n\">_inner_fn</span>\n<span class=\"w\">    </span><span class=\"k\">return</span> <span class=\"n\">fn</span><span class=\"p\">(</span><span class=\"o\">*</span><span class=\"n\">args</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;/Users/siagian/thesis/.venv/lib/python3.10/site-packages/huggingface_hub/file_download.py&quot;</span>, line <span class=\"m\">1007</span>, in <span class=\"n\">hf_hub_download</span>\n<span class=\"w\">    </span><span class=\"k\">return</span> <span class=\"n\">_hf_hub_download_to_cache_dir</span><span class=\"p\">(</span>\n  File <span class=\"nb\">&quot;/Users/siagian/thesis/.venv/lib/python3.10/site-packages/huggingface_hub/file_download.py&quot;</span>, line <span class=\"m\">1114</span>, in <span class=\"n\">_hf_hub_download_to_cache_dir</span>\n<span class=\"w\">    </span><span class=\"n\">_raise_on_head_call_error</span><span class=\"p\">(</span><span class=\"n\">head_call_error</span><span class=\"p\">,</span> <span class=\"n\">force_download</span><span class=\"p\">,</span> <span class=\"n\">local_files_only</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;/Users/siagian/thesis/.venv/lib/python3.10/site-packages/huggingface_hub/file_download.py&quot;</span>, line <span class=\"m\">1655</span>, in <span class=\"n\">_raise_on_head_call_error</span>\n<span class=\"w\">    </span><span class=\"k\">raise</span> <span class=\"n\">head_call_error</span>\n  File <span class=\"nb\">&quot;/Users/siagian/thesis/.venv/lib/python3.10/site-packages/huggingface_hub/file_download.py&quot;</span>, line <span class=\"m\">1543</span>, in <span class=\"n\">_get_metadata_or_catch_error</span>\n<span class=\"w\">    </span><span class=\"n\">metadata</span> <span class=\"o\">=</span> <span class=\"n\">get_hf_file_metadata</span><span class=\"p\">(</span>\n  File <span class=\"nb\">&quot;/Users/siagian/thesis/.venv/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py&quot;</span>, line <span class=\"m\">114</span>, in <span class=\"n\">_inner_fn</span>\n<span class=\"w\">    </span><span class=\"k\">return</span> <span class=\"n\">fn</span><span class=\"p\">(</span><span class=\"o\">*</span><span class=\"n\">args</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;/Users/siagian/thesis/.venv/lib/python3.10/site-packages/huggingface_hub/file_download.py&quot;</span>, line <span class=\"m\">1460</span>, in <span class=\"n\">get_hf_file_metadata</span>\n<span class=\"w\">    </span><span class=\"n\">r</span> <span class=\"o\">=</span> <span class=\"n\">_request_wrapper</span><span class=\"p\">(</span>\n  File <span class=\"nb\">&quot;/Users/siagian/thesis/.venv/lib/python3.10/site-packages/huggingface_hub/file_download.py&quot;</span>, line <span class=\"m\">283</span>, in <span class=\"n\">_request_wrapper</span>\n<span class=\"w\">    </span><span class=\"n\">response</span> <span class=\"o\">=</span> <span class=\"n\">_request_wrapper</span><span class=\"p\">(</span>\n  File <span class=\"nb\">&quot;/Users/siagian/thesis/.venv/lib/python3.10/site-packages/huggingface_hub/file_download.py&quot;</span>, line <span class=\"m\">307</span>, in <span class=\"n\">_request_wrapper</span>\n<span class=\"w\">    </span><span class=\"n\">hf_raise_for_status</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;/Users/siagian/thesis/.venv/lib/python3.10/site-packages/huggingface_hub/utils/_http.py&quot;</span>, line <span class=\"m\">453</span>, in <span class=\"n\">hf_raise_for_status</span>\n<span class=\"w\">    </span><span class=\"k\">raise</span> <span class=\"n\">_format</span><span class=\"p\">(</span><span class=\"n\">RepositoryNotFoundError</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">)</span> <span class=\"kn\">from</span><span class=\"w\"> </span><span class=\"nn\">e</span>\n<span class=\"gr\">huggingface_hub.errors.RepositoryNotFoundError</span>: <span class=\"n\">404 Client Error. (Request ID: Root=1-69842fa0-7c218531255839f23367aecc;1c6c6b1b-0812-4abd-818c-07b401884274)</span>\n\n<span class=\"x\">Repository Not Found for url: https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L6-v2/resolve/main/tokenizer_config.json.</span>\n<span class=\"x\">Please make sure you specified the correct `repo_id` and `repo_type`.</span>\n<span class=\"x\">If you are trying to access a private or gated repo, make sure you are authenticated. For more details, see https://huggingface.co/docs/huggingface_hub/authentication</span>\n\n<span class=\"gt\">The above exception was the direct cause of the following exception:</span>\n\n<span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">&quot;/Users/siagian/thesis/.venv/lib/python3.10/site-packages/marimo/_runtime/executor.py&quot;</span>, line <span class=\"m\">138</span>, in <span class=\"n\">execute_cell</span>\n<span class=\"w\">    </span><span class=\"n\">exec</span><span class=\"p\">(</span><span class=\"n\">cell</span><span class=\"o\">.</span><span class=\"n\">body</span><span class=\"p\">,</span> <span class=\"n\">glbls</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;/var/folders/5q/mzl9px4d7nnf739l1djt8jqc0000gp/T/marimo_13874/__marimo__cell_PKri_.py&quot;</span>, line <span class=\"m\">10</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">top2vec_model</span> <span class=\"o\">=</span> <span class=\"n\">Top2Vec</span><span class=\"p\">(</span>\n  File <span class=\"nb\">&quot;/Users/siagian/thesis/_top2vec/top2vec.py&quot;</span>, line <span class=\"m\">740</span>, in <span class=\"n\">__init__</span>\n<span class=\"w\">    </span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">word_vectors</span> <span class=\"o\">=</span> <span class=\"n\">average_embeddings</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">vocab</span><span class=\"p\">,</span>\n  File <span class=\"nb\">&quot;/Users/siagian/thesis/_top2vec/embedding.py&quot;</span>, line <span class=\"m\">13</span>, in <span class=\"n\">average_embeddings</span>\n<span class=\"w\">    </span><span class=\"n\">tokenizer</span> <span class=\"o\">=</span> <span class=\"n\">AutoTokenizer</span><span class=\"o\">.</span><span class=\"n\">from_pretrained</span><span class=\"p\">(</span><span class=\"n\">embedding_model</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;/Users/siagian/thesis/.venv/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py&quot;</span>, line <span class=\"m\">1089</span>, in <span class=\"n\">from_pretrained</span>\n<span class=\"w\">    </span><span class=\"n\">tokenizer_config</span> <span class=\"o\">=</span> <span class=\"n\">get_tokenizer_config</span><span class=\"p\">(</span><span class=\"n\">pretrained_model_name_or_path</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;/Users/siagian/thesis/.venv/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py&quot;</span>, line <span class=\"m\">921</span>, in <span class=\"n\">get_tokenizer_config</span>\n<span class=\"w\">    </span><span class=\"n\">resolved_config_file</span> <span class=\"o\">=</span> <span class=\"n\">cached_file</span><span class=\"p\">(</span>\n  File <span class=\"nb\">&quot;/Users/siagian/thesis/.venv/lib/python3.10/site-packages/transformers/utils/hub.py&quot;</span>, line <span class=\"m\">322</span>, in <span class=\"n\">cached_file</span>\n<span class=\"w\">    </span><span class=\"n\">file</span> <span class=\"o\">=</span> <span class=\"n\">cached_files</span><span class=\"p\">(</span><span class=\"n\">path_or_repo_id</span><span class=\"o\">=</span><span class=\"n\">path_or_repo_id</span><span class=\"p\">,</span> <span class=\"n\">filenames</span><span class=\"o\">=</span><span class=\"p\">[</span><span class=\"n\">filename</span><span class=\"p\">],</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;/Users/siagian/thesis/.venv/lib/python3.10/site-packages/transformers/utils/hub.py&quot;</span>, line <span class=\"m\">511</span>, in <span class=\"n\">cached_files</span>\n<span class=\"w\">    </span><span class=\"k\">raise</span> <span class=\"ne\">OSError</span><span class=\"p\">(</span>\n<span class=\"gr\">OSError</span>: <span class=\"n\">sentence-transformers/paraphrase-multilingual-MiniLM-L6-v2 is not a local folder and is not a valid model identifier listed on &#39;https://huggingface.co/models&#39;</span>\n<span class=\"x\">If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=&lt;your_token&gt;`</span>\n</pre></div>\n</span>",
-          "mimetype": "application/vnd.marimo+traceback"
-        }
-      ]
+      "code_hash": "d904d897b1ba25cf394715cc8f733188",
+      "outputs": [],
+      "console": []
     },
     {
       "id": "Xref",
       "code_hash": "51e6fa917c0ddc5707a9a51b773d2dce",
-      "outputs": [
-        {
-          "type": "error",
-          "ename": "exception",
-          "evalue": "An ancestor raised an exception (OSError): ",
-          "traceback": []
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
       "id": "SFPL",
       "code_hash": "4f06c9638ec5d9690309f51f39a3edba",
-      "outputs": [
-        {
-          "type": "error",
-          "ename": "exception",
-          "evalue": "An ancestor raised an exception (OSError): ",
-          "traceback": []
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
       "id": "BYtC",
       "code_hash": "7ec84ae9370a1e14ae291d547bb48995",
-      "outputs": [
-        {
-          "type": "error",
-          "ename": "exception",
-          "evalue": "An ancestor raised an exception (OSError): ",
-          "traceback": []
-        }
-      ],
+      "outputs": [],
       "console": []
     }
   ]

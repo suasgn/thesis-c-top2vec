@@ -153,7 +153,7 @@ def _(top2vec_model):
 @app.cell
 def _(top2vec_model):
     # Save the trained model for later reuse
-    model_path = "models/top2vec_indosum_multilingual_l6"
+    model_path = "models/top2vec_indosum_mpnet"
     top2vec_model.save(model_path)
     {"saved_path": model_path}
     return
