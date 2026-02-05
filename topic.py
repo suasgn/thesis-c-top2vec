@@ -6,6 +6,12 @@ app = marimo.App(width="full", auto_download=["html", "ipynb"])
 
 @app.cell
 def _():
+    # !pip install marimo datasets top2vec[sentence-transformers] numba
+    return
+
+
+@app.cell
+def _():
     import os
     import sys
 
@@ -223,6 +229,18 @@ def _(mo):
 
     Documents with top topic score > 0.7: 1160
     Documents with top topic score <= 0.7: 13102
+    Total documents: 14262
+
+    ### all-mpnet-base-v2
+
+    Documents with top topic score > 0.5: 12920
+    Documents with top topic score <= 0.5: 1342
+    Total documents: 14262
+
+
+
+    Documents with top topic score > 0.7: 10813
+    Documents with top topic score <= 0.7: 3449
     Total documents: 14262
     """)
     return
