@@ -5562,8 +5562,9 @@ dependencies = [
     { name = "python-lsp-ruff" },
     { name = "python-lsp-server" },
     { name = "pyzmq" },
+    { name = "sentence-transformers" },
     { name = "sqlglot" },
-    { name = "top2vec", extra = ["sentence-transformers"] },
+    { name = "top2vec" },
     { name = "torch" },
     { name = "websockets" },
 ]
@@ -5589,8 +5590,9 @@ requires-dist = [
     { name = "python-lsp-ruff", specifier = ">=2.3.0" },
     { name = "python-lsp-server", specifier = ">=1.14.0" },
     { name = "pyzmq", specifier = ">=27.1.0" },
+    { name = "sentence-transformers", specifier = ">=5.2.2" },
     { name = "sqlglot", specifier = ">=28.5.0" },
-    { name = "top2vec", extras = ["sentence-transformers"], specifier = ">=1.0.36" },
+    { name = "top2vec", git = "https://github.com/suasgn/Top2Vec" },
     { name = "torch", specifier = ">=2.9.1" },
     { name = "websockets", specifier = ">=15.0.1" },
 ]
@@ -5764,7 +5766,7 @@ wheels = [
 [[package]]
 name = "top2vec"
 version = "1.0.36"
-source = { registry = "https://pypi.org/simple" }
+source = { git = "https://github.com/suasgn/Top2Vec#80fc79faf5b4b1be0fa2f9526fd5bfbe91f943f0" }
 dependencies = [
     { name = "gensim" },
     { name = "hdbscan" },
@@ -5778,16 +5780,6 @@ dependencies = [
     { name = "transformers" },
     { name = "umap-learn" },
     { name = "wordcloud" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/bf/d6/d6b4b4b3b73fb6d48bd5aba7c003630383bae8c418bef0e197318a5c4539/top2vec-1.0.36.tar.gz", hash = "sha256:a187eff3f5a020bdea98a2717ed7f0602a5765cb4d024b05162e9bc45b791384", size = 39578, upload-time = "2024-11-14T23:48:30.029Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/91/26/18f44fb5bf6bc434462e375e159226da5b17284fd97cb99c87ea62360514/top2vec-1.0.36-py3-none-any.whl", hash = "sha256:181fd3e3bbf8328ccf0455c32e51d445e56e3077f257a4a5150274628eeaaad9", size = 33098, upload-time = "2024-11-14T23:48:28.164Z" },
-]
-
-[package.optional-dependencies]
-sentence-transformers = [
-    { name = "sentence-transformers" },
-    { name = "torch" },
 ]
 
 [[package]]

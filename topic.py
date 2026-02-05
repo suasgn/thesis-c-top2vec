@@ -6,7 +6,7 @@ app = marimo.App(width="full", auto_download=["html", "ipynb"])
 
 @app.cell
 def _():
-    # !pip install marimo datasets top2vec[sentence-transformers] numba
+    # !pip install marimo datasets git+https://github.com/suasgn/Top2Vec sentence_transformers torch numba
     return
 
 

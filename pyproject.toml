@@ -19,8 +19,9 @@ dependencies = [
     "python-lsp-ruff>=2.3.0",
     "python-lsp-server>=1.14.0",
     "pyzmq>=27.1.0",
+    "sentence-transformers>=5.2.2",
     "sqlglot>=28.5.0",
-    "top2vec[sentence-transformers]>=1.0.36",
+    "top2vec",
     "torch>=2.9.1",
     "websockets>=15.0.1",
 ]
@@ -29,3 +30,6 @@ dependencies = [
 dev = [
     "ty>=0.0.14",
 ]
+
+[tool.uv.sources]
+top2vec = { git = "https://github.com/suasgn/Top2Vec" }
