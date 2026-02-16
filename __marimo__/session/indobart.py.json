@@ -1,0 +1,300 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.19.11"
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "53474d874a0a46b3e2050d2c20f78b8d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "531ba6b5acdb0d334fe92d05a56d4b02",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "6b5b617f7b4c595dd67b1ab2d089cd79",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>MBartForConditionalGeneration(\n  (model): MBartModel(\n    (shared): MBartScaledWordEmbedding(40004, 768, padding_idx=1)\n    (encoder): MBartEncoder(\n      (embed_tokens): MBartScaledWordEmbedding(40004, 768, padding_idx=1)\n      (embed_positions): MBartLearnedPositionalEmbedding(1026, 768)\n      (layers): ModuleList(\n        (0-5): 6 x MBartEncoderLayer(\n          (self_attn): MBartAttention(\n            (k_proj): Linear(in_features=768, out_features=768, bias=True)\n            (v_proj): Linear(in_features=768, out_features=768, bias=True)\n            (q_proj): Linear(in_features=768, out_features=768, bias=True)\n            (out_proj): Linear(in_features=768, out_features=768, bias=True)\n          )\n          (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)\n          (activation_fn): GELUActivation()\n          (fc1): Linear(in_features=768, out_features=3072, bias=True)\n          (fc2): Linear(in_features=3072, out_features=768, bias=True)\n          (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)\n        )\n      )\n      (layernorm_embedding): LayerNorm((768,), eps=1e-05, elementwise_affine=True)\n      (layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)\n    )\n    (decoder): MBartDecoder(\n      (embed_tokens): MBartScaledWordEmbedding(40004, 768, padding_idx=1)\n      (embed_positions): MBartLearnedPositionalEmbedding(1026, 768)\n      (layers): ModuleList(\n        (0-5): 6 x MBartDecoderLayer(\n          (self_attn): MBartAttention(\n            (k_proj): Linear(in_features=768, out_features=768, bias=True)\n            (v_proj): Linear(in_features=768, out_features=768, bias=True)\n            (q_proj): Linear(in_features=768, out_features=768, bias=True)\n            (out_proj): Linear(in_features=768, out_features=768, bias=True)\n          )\n          (activation_fn): GELUActivation()\n          (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)\n          (encoder_attn): MBartAttention(\n            (k_proj): Linear(in_features=768, out_features=768, bias=True)\n            (v_proj): Linear(in_features=768, out_features=768, bias=True)\n            (q_proj): Linear(in_features=768, out_features=768, bias=True)\n            (out_proj): Linear(in_features=768, out_features=768, bias=True)\n          )\n          (encoder_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)\n          (fc1): Linear(in_features=768, out_features=3072, bias=True)\n          (fc2): Linear(in_features=3072, out_features=768, bias=True)\n          (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)\n        )\n      )\n      (layernorm_embedding): LayerNorm((768,), eps=1e-05, elementwise_affine=True)\n      (layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)\n    )\n  )\n  (lm_head): Linear(in_features=768, out_features=40004, bias=False)\n)</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "02deaee9c16c16d9110bd9e660ce92c6",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>IndoNLGTokenizer(name_or_path=&#x27;indobenchmark/indobart-v2&#x27;, vocab_size=40004, model_max_length=1000000000000000019884624838656, is_fast=False, padding_side=&#x27;right&#x27;, truncation_side=&#x27;right&#x27;, special_tokens={&#x27;bos_token&#x27;: &#x27;&lt;s&gt;&#x27;, &#x27;eos_token&#x27;: &#x27;&lt;/s&gt;&#x27;, &#x27;unk_token&#x27;: &#x27;&lt;unk&gt;&#x27;, &#x27;sep_token&#x27;: &#x27;&lt;/s&gt;&#x27;, &#x27;pad_token&#x27;: &#x27;&lt;pad&gt;&#x27;, &#x27;cls_token&#x27;: &#x27;&lt;s&gt;&#x27;, &#x27;mask_token&#x27;: &#x27;&lt;mask&gt;&#x27;, &#x27;additional_special_tokens&#x27;: [&#x27;&lt;tag&gt;&#x27;]}, clean_up_tokenization_spaces=False, added_tokens_decoder={\n\t0: AddedToken(&quot;&lt;s&gt;&quot;, rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),\n\t1: AddedToken(&quot;&lt;pad&gt;&quot;, rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),\n\t2: AddedToken(&quot;&lt;/s&gt;&quot;, rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),\n\t3: AddedToken(&quot;&lt;unk&gt;&quot;, rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),\n\t39947: AddedToken(&quot;&lt;tag&gt;&quot;, rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),\n\t40003: AddedToken(&quot;&lt;mask&gt;&quot;, rstrip=False, lstrip=True, single_word=False, normalized=True, special=True),\n}\n)</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "f60829cf007403ce6b3882c5bda5bf8a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "92da143f6da81340bd1d77c92bb62836",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": "181be7a21e036cf2bbad33116b06a32a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&lt;top2vec.top2vec.Top2Vec object at 0x107a3f580&gt;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ahvW",
+      "code_hash": "3043d0266beedda39993a5e9e5c98f3a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>array([&#x27;Jakarta , CNN Indonesia - - Dokter Ryan Thamrin , yang terkenal lewat acara Dokter Oz Indonesia , meninggal dunia pada Jumat ( 4 / 8 ) dini hari . Dokter Lula Kamal yang merupakan selebriti sekaligus rekan kerja Ryan menyebut kawannya itu sudah sakit sejak setahun yang lalu . Lula menuturkan , sakit itu membuat Ryan mesti vakum dari semua kegiatannya , termasuk menjadi pembawa acara Dokter Oz Indonesia . Kondisi itu membuat Ryan harus kembali ke kampung halamannya di Pekanbaru , Riau untuk menjalani istirahat . &quot; Setahu saya dia orangnya sehat , tapi tahun lalu saya dengar dia sakit . ( Karena ) sakitnya , ia langsung pulang ke Pekanbaru , jadi kami yang mau jenguk juga susah . Barangkali mau istirahat , ya betul juga , kalau di Jakarta susah isirahatnya , &quot; kata Lula kepada CNNIndonesia.com , Jumat ( 4 / 8 ) . Lula yang mengenal Ryan sejak sebelum aktif berkarier di televisi mengaku belum sempat membesuk Ryan lantaran lokasi yang jauh . Dia juga tak tahu penyakit apa yang diderita Ryan . &quot; Itu saya enggak tahu , belum sempat jenguk dan enggak selamanya bisa dijenguk juga . Enggak tahu berat sekali apa bagaimana , &quot; tutur Ryan . Walau sudah setahun menderita sakit , Lula tak mengetahui apa penyebab pasti kematian Dr Oz Indonesia itu . Meski demikian , ia mendengar beberapa kabar yang menyebut bahwa penyebab Ryan meninggal adalah karena jatuh di kamar mandi . \u201c Saya tidak tahu , barangkali penyakit yang dulu sama yang sekarang berbeda , atau penyebab kematiannya beda dari penyakit sebelumnya . Kita kan enggak bisa mengambil kesimpulan , &quot; kata Lula . Ryan Thamrin terkenal sebagai dokter yang rutin membagikan tips dan informasi kesehatan lewat tayangan Dokter Oz Indonesia . Ryan menempuh Pendidikan Dokter pada tahun 2002 di Fakultas Kedokteran Universitas Gadjah Mada . Dia kemudian melanjutkan pendidikan Klinis Kesehatan Reproduksi dan Penyakit Menular Seksual di Mahachulalongkornrajavidyalaya University , Bangkok , Thailand pada 2004 .&#x27;,\n       &#x27;Selfie ialah salah satu tema terpanas di kalangan produsen smartphone , bahkan menjadi senjata andalan beberapa brand terkenal . Anda mungkin berpikir bahwa saat ini , pasar handset spesialis selfie sudah sangat sesak . Tapi Asus masih melihat adanya peluang besar menanti di sana . Dari data mereka , sebanyak 71 persen orang Indonesia setidaknya mengambil selfie atau wefie setiap minggu . Setelah mulai menyelami ranah swafoto dua tahun silam lewat ZanFone Selfie , sang produsen hardware asal Taiwan itu akhirnya membawa sepasang pewarisnya ke tanah air . Handset - handset ini merupakan anggota keluarga ZenFone generasi keempat dan keduanya sama-sama dibekali setup kamera ganda di depan . Mereka adalah Asus ZenFone 4 Selfie Pro ZD552KL dan ZenFone 4 Selfie ZD553KL . CEO Asus Jerry Shen menjelaskan bahwa sudah waktunya bagi Asus untuk memberikan penawaran baru buat penggemar self - portrait demi menunjukkan keseriusan mereka di segmen itu . Walaupun \\xa0 telah tersedia banyak pilihan , \\xa0 Asus berpendapat bahwa konsumen di Indonesia membutuhkan solusi yang \u2018 lebih profesional\u2019 . Dua ZenFone Selfie anyar ini kabarnya diracik sedemikian rupa sebagai jawaban atas kekurangan yang ada di perangkat - perangkat kompetitor , khususnya pada aspek jangkauan lensa dan performa di kondisi low-light . ZenFone 4 Selfie Pro \\xa0 merupakan produk swafoto pamungkas Asus . Tubuh berbahan aluminiumnya dibuat melalui teknik nano molding dan tiap lekukannya dibentuk secara presisi . Dipadu layar berlapis Corning Gorilla Glass 5 2.5D , saya akui penampilan handset ini sangat menawan , terutama \\xa0 untuk varian berwarna merahnya . Sebagai jendela akses konten , smartphone \\xa0  menghidangkan layar AMOLED 1080p berkepadatan 401 ppi seluas 5,5 - inci . Atraksi utama dari ZenFone 4 Selfie Pro tentu saja adalah kamera depannya . Di sana , Asus mencantumkan sistem DuoPixel 24Mp , berisi kombinasi sepasang sensor Sony Exmor RS IMX362 1,4 \u00b5m 12 - megapixel dengan aperture f/1.8 , ditambah sensor Omnivision 5670 1,12 \u00b5m f/2.2 yang memiliki lensa wide-angle 120 derajat , sehingga kamera bisa merangkul objek dua kali lebih banyak \u2013 memungkinkan Anda ber-selfie bersama kawan ataupun keluarga tanpa bantuan monopod . Selain itu , Asus melengkapi ZenFone 4 Selfie Pro dengan bundel perkakas khusus swafoto bernama SelfieMaster . Tool ini berisi fitur-fitur krusial semisal beautify ( buat foto maupun video ) , serta kolase dan BeautyLive . Produsen juga tak lupa menyiapkan flash LED softlight \\xa0 untuk membantu pengambilan foto di kondisi temaram . Kamera belakangnya sendiri mengandalkan sensor Sony Exmor IMX351 1 \u00b5m 16 - megapixel berlensa 26 mm f/2.2 . Ia dibantu sistem electronic image stabilization , phase detection autofocus , serta LED dual - tone flash . Di dalam , Asus mempersenjatai ZD552KL dengan chip Qualcomm Snapdragon 625 ( ada prosesor octa-core Cortex - A53 2 GHz dan GPU Adreno 506 ) , RAM sebesar 4 GB , ROM 64 GB , dan baterai 3.000 mAh . Smartphone berjalan di sistem operasi Android 7.1.1 Nougat plus interface ZenUI 4.0 . ZD553KL ialah alternatif lebih terjangkau dari saudarinya di atas . Handset mengusung arahan desain serupa ZenFone 4 Selfie Pro , namun konstruksi tubuhnya terbuat dari plastik , dan layar IPS 5,5 - incinya menyajikan resolusi 720p . Tapi jangan cemas soal penampilannya , smartphone tetap memanfaatkan kaca 2.5D sehingga memberi kesan menyambung pada lekukan di sisi samping . Kapabilitas swafoto ZenFone 4 Selfie bersandar pada sensor Omnivision 20880 1 \u00b5m 20 - megapixel f/2.0 dan sensor Omnivision 8856 1,12 \u00b5m f/2.4 dengan lensa wide-angle 120 derajat . Sudut jangkauan jepretan dan sejumlah kelengkapannya tak berbeda dari Selfie 4 Pro . Anda kembali dihindangkan SelfieMaster , flash LED softlight , mode panorama , serta HDR . Ukuran megapixel kamera belakangnya setara ZenFone 4 Selfie Pro , namun jenis sensornya berbeda . Smartphone tersebut menggunakan Omnivision 16880 1 \u00b5m 16Mp dengan aperture lensa f/2.2 . Meski demikian , fitur-fitur penunjang fotografi seperti PDAF , EIS , dan flash LED juga tetap ada di sana . ZenFone 4 Selfie diotaki system-on-chip Qualcomm Snapdragon 430 , berisi CPU octa-core Cortex - A53 1,4 GHz dan GPU Adreno 505 . Handset menyimpan RAM 4 GB , memori internal 64 GB , lalu tenaganya dipasok oleh baterai 3.000 mAh non - removable di dalam . Satu keunikan yang membuat ZD553KL lebih \u2018 unggul\u2019 dari ZenFone 4 Selfie Pro adalah dukungan tiga slot kartu : dua untuk SIM , dan satu lagi buat microSD ( storage dapat diekspansi \\xa0 sampai \\xa0 2 TB ) . Smartphone juga beroperasi di platform Android 7.1.1 Nougat dengan ZenUI 4.0 . ZenFone 4 Selfie Pro ZD552KL dibanderol seharga Rp 5 juta , sedangkan ZenFone 4 Selfie ZD553KL dipatok di harga Rp 3,5 juta . Kedua perangkat sudah mulai dipasarkan mulai tanggal 25 November , dan sampai \\xa0 tanggal 10 November nanti , paket penjualan turut dibundel bersama \u2018 Gong Yoo Special Gift Box\u2019 serta speaker Bluetooth khusus ZenFone 4 Selfie Pro \u2013 selama persediaan masih ada . DailySocial.id adalah portal berita startup dan inovasi teknologi . Kamu bisa menjadi member komunitas startup dan inovasi DailySocial.id , mengunduh laporan riset dan statistik seputar teknologi secara cuma-cuma , dan mengikuti berita startup Indonesia dan gadget terbaru .&#x27;,\n       &#x27;Jakarta , CNN Indonesia - - Dinas Pariwisata Provinsi Bengkulu kembali menggelar kegiatan Bimbingan Teknis ( Bimtek ) SDM Kepariwisataan dalam menyongson &quot; Visit 2020 Wonderful Bengkulu &quot; . Kegiatan yang berlangsung pada 8 hingga 10 November kemarin tersebut sebagai bagian dari upaya Pemerintah Provinsi Bengkulu dalam Hadir sebagai pemateri kegiatan pada 8 - 10 November itu adalah Plt. Asdep Strategi Pemasaran Pariwisata Nusantara , Deputi Bidang Pengembangan Pemasaran Pariwisata Nusantara Hariyanto serta perwakilan dari Deputi Bidang Pengembangan Kelembagaan Kementerian Pariwisata , Faizal . Kepala Dinas Pariwisata Provinsi Bengkulu Yudi Satria mengatakan , kegiatan Bimtek diikuti 250 peserta yang terdiri dari aparatur Pemerintah Provinsi , ASN Kabupaten / Kota , Kelompok Sadar Wisata serta pihak terkait sektor pariwisata di Bengkulu . &quot; Kegiatan ini dimaksudkan untuk memberikan pembekalan kepada peserta di bidang kepariwisataan , &quot; ujar Yudi Satria . Ia mengatakan , Pemprov telah menetapkan pariwisata sebagai salah satu sektor yang akan dikembangkan dan akan menjadi sektor unggulan dalam meningkatkan pertumbuhan ekonomi daerah serta masyarakat . Hal itu , jelas Yudi , tidak lepas dari potensi pariwisata di Bengkulu yang besar memiliki kekayaan alam yang indah serta budaya yang tinggi . &quot; Karena itu pula Pemprov telah menetapkan program \\&#x27; Visit 2020 Wonderful Bengkulu &quot; yang akan menjadi tujuan besar pariwisata Bengkulu . Salah satu poin utamanya adalah upaya menghasilkan SDM pariwisata yang andal yang akan diwujudkan melalui Bimtek ini , &quot; ujar Yudi . Selain itu , dalam menunjang proses \\&#x27; Visit 2020 Wonderful Bengkulu \\&#x27; , Pemprov juga telah menyiapkan 52 acara yang akan digelar dalam satu tahun ke depan yang bertujuan mengangkat potensi lokal ke kelas dunia . &quot; Salah satu yang dirancang secara besar adalah Sail Bengkulu yang akan menjual keindahan alam laut Bengkulu yang berhadapan langsung dengan Samudera Hindia , &quot; kata dia . Ajang lainnya tentunya Festival Tabot Muharam yang selalu menyedot minat ribuan wisatawan setiap tahun serta Festival Bumi Rafflesia . &quot; Semua kegiatan ini harus disinkronkan , penguatan SDM dan bagaimana promosi pemasarannya agar semua acara ini layak jual untuk wisatawan , &quot; ujarnya . Sementara Hariyanto dalam kesempatan itu menyampaikan materi tentang pengembangan SDM sektor pariwisata dan pengemasan serta pemasaran satu acara . Dalam paparanya ia menjelaskan , bahwa Bimtek penting untuk meningkatkan kompetensi SDM kepariwisataan sehingga mampu berperan dalam peningkatan pembangunan kepariwisataan . Selain itu ia menegaskan bahwa dalam pengembangan pariwisata , promosi juga hal yang harus diperhatikan . Misalnya penekanan pada mekanisme promosi pariwisata secara digital atau daring , penyelenggaraan acara juga harus terkurasi dengan baik sehingga memiliki daya tarik yang kuat . &quot; Bagaimana juga meningkatkan efektivitas partisipasi Dinas Pariwisata pada penyelenggaraan acara dan bagaimana cara memasarkan dan mempromosikan agar bisa dikenal dan menjadi daya tarik wisatawan , \u201d terang Hariyanto . Deputi Pengembangan Pemasaran Pariwisata Nusantara , Esthy Reko Astuti mengatakan , Bimtek kali ini juga bertujuan memberi perspektif dan arah yang sama tentang program promosi Pariwisata di Bengkulu . &quot; Selain itu juga untuk memahami potensi destinasi - destinasi wisata di Bengkulu , &quot; ujar Esthy . Menteri Pariwisata Arief Yahya mengapresiasi kegiatan Bimtek sebagai salah satu upaya dan komitmen dari Pemerintah Provinsi Bengkulu dalam mewujudkan pariwisata sebagai salah satu sektor utama . Ia pun berkomitmen akan mendung Penprov dalam mewujudkan &quot; Visit 2020 Wonderful Bengkulu &quot; . &quot; Obyek wisata andalan Bengkulu , Benteng Marlborough , Rumah Bung Karno , Pantai Panjang yang memiliki pasir putih yang indah dan bersih . Semuanya world class , ditambah dengan puluhan atraksi didalamnya , tinggal kita akan dukung dan promosikan \\&#x27; Bengkulu Visit \\&#x27; sehingga lebih mendunia , &quot; kata Arief ( syahb )&#x27;,\n       ...,\n       &#x27;JAKARTA ( Pos Kota ) \u2013 Komisi Pemberantasan Korupsi ( KPK ) sudah melimpahkan berkas perkara dugaan suap perizinan dan pengadaan proyek di lingkungan Direktorat Jenderal Perhubungan Laut Kemenhub tahun 2016 - 2017 , dengan tersangka mantan Dirjen Hubla Kemenhub , Antonius Tonny Budiono ke Pengadilan Tindak Pidana Korupsi ( Tipikor ) Jakarta . \u201c Pada hari ini 21 Desember telah dilimpahkan barang bukti dari tersangka ATB ( Antonius Tonny Budiono ) . Jadi maksimal 14 hari kedepan yang bersangkutan berkasnya akan dilimpahkan ke pengadilan dalam hal ini adalah PN Tipikor Jakarta , \u201d kata Kepala Bagian Pemberitaan dan Publikasi KPK , Priharsa Nugraha , Kamis ( 21 / 12 / 2017 ) . Terkait kasus ini , kata Priharsa , penyidik memeriksa 70 saksi . Setelah berkas dilimpahkan , maka perkaranya pun segera disidangkan . \u201c Jadi pelimpahan ini dilakukan setelah penyidik melakukan pemeriksaan terhadap 70 orang saksi , \u201d kata dia . KPK menetapkan Antonius Tonny Budiono dan Komisaris PT Adhi Guna Keruktama ( AGK ) Adiputra Kurniawan sebagai tersangka . Keduanya diduga bermain dalam perizinan dan pengadaan proyek-proyek di lingkungan Ditjen Hubla pada 2016 - 2017 . Tim KPK mengamankan 33 tas ransel berisi uang pecahan rupiah dan mata uang asing yang totalnya mencapai Rp 18,9 miliar . Selain itu , diamankan pula empat ATM , yang salah satunya berisi saldo sebesar Rp 1,174 miliar . Tonny Budiono diduga menerima suap dari pelaksanaan proyek di lingkungan Ditjen Hubla sejak 2016 lalu . Dia menggunakan modus baru dengan dibukakan rekening di sejumlah bank , yang telah diisi sebelumnya oleh si pemberi . Dalam perkembangan penyidikan , KPK menetapkan keduanya sebagai tersangka penerima gratifikasi terkait proyek-proyek di Ditjen Hubla . ( julian / b )&#x27;,\n       &#x27;Merdeka.com - Sebuah kabar gembira datang bagi   sepakbola Indonesia . Posisi Timnas Indonesia di rangking FIFA terbaru mengalami peningkatan , di mana Skuat Garudanaik dua peringkat dibanding capaian bulan lalu . FIFA selaku otoritas sepakbola tertinggi dunia baru-baru ini merilis ranking FIFA untuk periode bulan Juni . Dalam rangking tersebut , Indonesia menunjukan prestasi yang bagus dengan naik dua peringkat . Indonesia saat ini berada di peringkat 175 dengan mengoleksi 105 poin . Peringkat ini naik dua peringkat dari bulan lalu , di mana Indonesia menduduki peringkat ke 177 . Meski naik dua peringkat , pencapaian Indonesia ini masih terbilang kalah dari negara-negara tetangga di ASEAN . Sebagai contoh , Indonesia masih kalah satu peringkat dari Kamboja yang berada di peringkat 174 dengan raihan 107 poin . Indonesia juga tertinggal dari Malaysia yang berada di peringkat 155 dengan raihan 145 poin . Sementara itu ranking tertinggi negara ASEAN masih dipegang oleh Filipina yang berada di rangking 126 dengan raihan 251 poin . Sementara itu Thailand berada di peringkat 127 dengan raihan 249 poin . Semoga dengan naiknya peringkat Indonesia ini memacu para punggawa Timnas kita untuk bermain lebih baik di masa depan . ( FIFA / dub )&#x27;,\n       &#x27;Ada satu perangkat menarik lainnya yang tersaji dalam suguhan keynote Apple yang digelar semalam , yaitu Apple TV , perangkat rumah yang menawarkan lebih banyak hiburan nan memanjakan . Mata menjadi salah satu bagian vital pengguna yang akan paling dimanjakan oleh Apple TV , berkat adanya dukungan resolusi 4 K HDR super bening , lebih bening dari resolusi 4K. Generasi kelima Apple TV ini menyuguhkan sisi visual yang sangat optimal , menampilkan setiap lekukan objek dalam resolusi terbaik . Gambar yang dihasilkan akan lebih tajam , lebih detail , dan nyata . Dampaknya sudah barang tentu memberi rasa nyaman sekaligus memuaskan tuntutan sisi visual pengguna modern . Untuk mengimbangi kemampuan tersebut , Apple membenamkan chip Apple A10X yang juga diadopsi oleh iPad Pro . Bermodalkan chipset yang lebih baik , maka performa baik core maupun grafisnya tentu akan melampaui apa yang ditawarkan oleh generasi Apple TV sebelumnya . Secara default , Apple TV akan menampilkan gambar dalam resolusi terbaik . Namun pengguna tetap mempunyai keleluasaan untuk menentukan pilihan yang menurutnya paling pas untuk perangkat televisi yang mereka punyai . Sementara di bagian piranti lunak , Apple masih menggunakan tvOS namun dengan versi yang sudah ditingkatkan . Peningkatan dapat dijumpai di beberapa bagian , antara lain bagian tatap muka yang mengakomodasi konten - konten 4 K dan HDR . Kemudian dukungan sejumlah aplikasi baru , salah satunya aplikasi siaran langsung program-program olahraga . Integrasi asisten pintar Siri membuat Apple TV semakin fungsional dan cerdas . Selain remote yang dirombak , Siri dapat membantu pengguna menemukan cara yang paling mudah untuk memenuhi keinginan mereka , mulai dari film , musik , hiburan , dan lain-lain hanya dengan input suara . Aplikasi TV mendukung lebih dari 60 layanan di Apple TV dan perangkat iOS . Memungkinkan pengguna untuk membagikan foto dan video dari iPad atau iPhone ke layar yang lebih lega . AirPlay juga tersedia bagi yang ingin menonton film yang tersimpan di iPhone atau iPad . Pre - order Apple TV 4 K akan mulai dibuka pada tanggal 15 September mendatang . Harga jualnya di kisaran US$ 179 untuk varian 32 GB dan $ 199 untuk varian 64 GB . Sumber berita Apple . DailySocial.id adalah portal berita startup dan inovasi teknologi . Kamu bisa menjadi member komunitas startup dan inovasi DailySocial.id , mengunduh laporan riset dan statistik seputar teknologi secara cuma-cuma , dan mengikuti berita startup Indonesia dan gadget terbaru .&#x27;],\n      shape=(14262,), dtype=object)</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vXCI",
+      "code_hash": "eb54dec8c34660e5c8a59f882fd5ad53",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "FTNW",
+      "code_hash": "80bbd526b7a4d5e1b206e2d943b94e7f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;Jakarta , CNN Indonesia - - Dokter Ryan Thamrin , yang terkenal lewat acara Dokter Oz Indonesia , meninggal dunia pada Jumat ( 4 / 8 ) dini hari . Dokter Lula Kamal yang merupakan selebriti sekaligus rekan kerja Ryan menyebut kawannya itu sudah sakit sejak setahun yang lalu . Lula menuturkan , sakit itu membuat Ryan mesti vakum dari semua kegiatannya , termasuk menjadi pembawa acara Dokter Oz Indonesia . Kondisi itu membuat Ryan harus kembali ke kampung halamannya di Pekanbaru , Riau untuk menjalani istirahat . &quot; Setahu saya dia orangnya sehat , tapi tahun lalu saya dengar dia sakit . ( Karena ) sakitnya , ia langsung pulang ke Pekanbaru , jadi kami yang mau jenguk juga susah . Barangkali mau istirahat , ya betul juga , kalau di Jakarta susah isirahatnya , &quot; kata Lula kepada CNNIndonesia.com , Jumat ( 4 / 8 ) . Lula yang mengenal Ryan sejak sebelum aktif berkarier di televisi mengaku belum sempat membesuk Ryan lantaran lokasi yang jauh . Dia juga tak tahu penyakit apa yang diderita Ryan . &quot; Itu saya enggak tahu , belum sempat jenguk dan enggak selamanya bisa dijenguk juga . Enggak tahu berat sekali apa bagaimana , &quot; tutur Ryan . Walau sudah setahun menderita sakit , Lula tak mengetahui apa penyebab pasti kematian Dr Oz Indonesia itu . Meski demikian , ia mendengar beberapa kabar yang menyebut bahwa penyebab Ryan meninggal adalah karena jatuh di kamar mandi . \u201c Saya tidak tahu , barangkali penyakit yang dulu sama yang sekarang berbeda , atau penyebab kematiannya beda dari penyakit sebelumnya . Kita kan enggak bisa mengambil kesimpulan , &quot; kata Lula . Ryan Thamrin terkenal sebagai dokter yang rutin membagikan tips dan informasi kesehatan lewat tayangan Dokter Oz Indonesia . Ryan menempuh Pendidikan Dokter pada tahun 2002 di Fakultas Kedokteran Universitas Gadjah Mada . Dia kemudian melanjutkan pendidikan Klinis Kesehatan Reproduksi dan Penyakit Menular Seksual di Mahachulalongkornrajavidyalaya University , Bangkok , Thailand pada 2004 .&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "IQhW",
+      "code_hash": "0bc1d45cf3edde7348a0df587cb4f305",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>array([[0.        , 0.        , 0.        , ..., 0.        , 0.01953125,\n        0.        ],\n       [0.        , 0.        , 0.        , ..., 0.        , 0.        ,\n        0.        ],\n       [0.        , 0.        , 0.        , ..., 0.        , 0.        ,\n        0.        ],\n       ...,\n       [0.        , 0.        , 0.        , ..., 0.02539062, 0.        ,\n        0.        ],\n       [0.        , 0.        , 0.        , ..., 0.        , 0.        ,\n        0.        ],\n       [0.        , 0.        , 0.        , ..., 0.        , 0.        ,\n        0.        ]], shape=(14262, 2101))</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ffXL",
+      "code_hash": "f7577a2b33d904efe6d8a8006cf4a05e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>array([0.        , 0.        , 0.        , ..., 0.        , 0.01953125,\n       0.        ], shape=(2101,))</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TvGJ",
+      "code_hash": "3335acbbcbf9fc9910827420c1c7bcb1",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>array([ 286, 1290, 2009, ..., 1990, 1766, 1355], shape=(14262,))</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "EQhO",
+      "code_hash": "e69399f7e5748381e3d0f5ff53488bc3",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>array([2009, 2020, 2021, ...,  661,  315, 1573], shape=(2092,))</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "HXKB",
+      "code_hash": "9b8ba744b08f1df424e39dcc950b493b",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>array([717164, 179468, 154422, ...,      1,      1,      1], shape=(2092,))</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "GnLT",
+      "code_hash": "fdaa539e50e22bdf0df87f05a8506834",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>286</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "KMIc",
+      "code_hash": "b861f3509f21ab0277231c8adeb4e0f9",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>0.626953125</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "sIhC",
+      "code_hash": "b2b5d22b52684c3dde204346b36d7ced",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>286</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "khhl",
+      "code_hash": "3cff08bbfab80acf55e3a8f12b1b7e94",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>array([[&#x27;tentang informasi&#x27;, &#x27;mengumpulkan informasi&#x27;,\n        &#x27;pulogadung jakarta&#x27;, ..., &#x27;negara asean&#x27;,\n        &#x27;memberikan informasi&#x27;, &#x27;jakarta senin&#x27;],\n       [&#x27;jakarta pusat&#x27;, &#x27;pengadilan tinggi&#x27;, &#x27;industri pengolahan&#x27;, ...,\n        &#x27;tebet jakarta&#x27;, &#x27;pengiriman barang&#x27;, &#x27;keputusan pengadilan&#x27;],\n       [&#x27;jakarta pusat&#x27;, &#x27;pengadilan tinggi&#x27;, &#x27;penggunaan dana&#x27;, ...,\n        &#x27;pengadilan agama&#x27;, &#x27;mengaku bersalah&#x27;, &#x27;tentang informasi&#x27;],\n       ...,\n       [&#x27;industri pengolahan&#x27;, &#x27;negara asean&#x27;, &#x27;indonesia pnri&#x27;, ...,\n        &#x27;kepresidenan jakarta&#x27;, &#x27;pengenaan biaya&#x27;, &#x27;stone indonesia&#x27;],\n       [&#x27;jakarta pusat&#x27;, &#x27;jakarta cnn&#x27;, &#x27;cnn indonesia&#x27;, ...,\n        &#x27;putusan pengadilan&#x27;, &#x27;penganiayaan terhadap&#x27;,\n        &#x27;pengamanan ketat&#x27;],\n       [&#x27;jakarta pusat&#x27;, &#x27;ptun jakarta&#x27;, &#x27;penjaringan jakarta&#x27;, ...,\n        &#x27;rawamangun jakarta&#x27;, &#x27;kemang jakarta&#x27;, &#x27;jakarta nonaktif&#x27;]],\n      shape=(2101, 50), dtype=&#x27;&lt;U27&#x27;)</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "DzWm",
+      "code_hash": "0a9937bed94fb4ae500a61e2f2d7c571",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>array([&#x27;jakarta pusat&#x27;, &#x27;indonesia corruption&#x27;, &#x27;jakarta cnn&#x27;,\n       &#x27;jakarta selatan&#x27;, &#x27;jakarta jumat&#x27;, &#x27;indonesian soccer&#x27;,\n       &#x27;ajang mtv&#x27;, &#x27;abang jakarta&#x27;, &#x27;cilangkap jakarta&#x27;, &#x27;slipi jakarta&#x27;,\n       &#x27;negara asean&#x27;, &#x27;badung bali&#x27;, &#x27;indonesia bi&#x27;, &#x27;gading jakarta&#x27;,\n       &#x27;pa jakarta&#x27;, &#x27;indonesia soccer&#x27;, &#x27;penggalangan dana&#x27;,\n       &#x27;ptik jakarta&#x27;, &#x27;jakarta senin&#x27;, &#x27;rawamangun jakarta&#x27;,\n       &#x27;jakarta convention&#x27;, &#x27;indonesia selection&#x27;, &#x27;jakarta djarot&#x27;,\n       &#x27;pengisian bahan&#x27;, &#x27;gaikindo indonesia&#x27;, &#x27;cengkareng jakarta&#x27;,\n       &#x27;aspac jakarta&#x27;, &#x27;ulama indonesia&#x27;, &#x27;jakarta nonaktif&#x27;,\n       &#x27;kepresidenan jakarta&#x27;, &#x27;cipayung jakarta&#x27;, &#x27;bali nusa&#x27;,\n       &#x27;menteng jakarta&#x27;, &#x27;pulau bali&#x27;, &#x27;jakarta antara&#x27;,\n       &#x27;cakung jakarta&#x27;, &#x27;cawang jakarta&#x27;, &#x27;pengenaan pajak&#x27;,\n       &#x27;indonesian basketball&#x27;, &#x27;jakarta kamis&#x27;, &#x27;indonesia pnri&#x27;,\n       &#x27;bintang tamu&#x27;, &#x27;pengibaran bendera&#x27;, &#x27;jakarta rabu&#x27;,\n       &#x27;diaspora indonesia&#x27;, &#x27;tamansari jakarta&#x27;, &#x27;negara kepulauan&#x27;,\n       &#x27;ptun jakarta&#x27;, &#x27;denpasar bali&#x27;, &#x27;penjaringan jakarta&#x27;],\n      dtype=&#x27;&lt;U27&#x27;)</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "sRQj",
+      "code_hash": "eb6bd4500a1e65ca6ccb96637ee565f5",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>50</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SFPL",
+      "code_hash": null,
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "fent",
+      "code_hash": null,
+      "outputs": [],
+      "console": []
+    }
+  ]
+}

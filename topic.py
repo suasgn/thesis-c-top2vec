@@ -23,7 +23,7 @@ def _():
     from datasets import load_dataset
 
     # modified top2vec library
-    from _top2vec import Top2Vec
+    from top2vec import Top2Vec
 
     print(sys.version)
     return Top2Vec, json, load_dataset, mo
